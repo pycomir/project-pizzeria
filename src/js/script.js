@@ -120,6 +120,8 @@
       /* END: click event listener to trigger */
       });
     }
+
+  //end of product class
   }
 
 
