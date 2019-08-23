@@ -156,6 +156,7 @@
       });
     }
 
+
     processOrder() {
       const thisProduct = this;
       console.log('processOrder:', thisProduct);
@@ -169,40 +170,41 @@
 
       /* START LOOP: for each paramId in thisProduct.data.params */
       /* save the element in thisProduct.data.params with key paramId as const param */
-
       let params = thisProduct.data.params;
       console.log('params:', params);
 
-
       for(let param in params) {
-        console.log('param:', param);
-        const options = params[param].options;
-        console.log('options:', options);
+        param = params[param];
+        console.log('paramId:', param);
+        const options = param.options
+        console.log('options:', param.options);
 
+        for(let option in options) {
+          console.log('option:', option);
+          option = options[option];
+          console.log('optionId:', option);
 
+          const optionSelected = formData.hasOwnProperty(param) && formData[param].indexOf(option) > -1;
+          console.log('optionSelected:', optionSelected);
+          console.log('option.price:', option.price);
 
-        /* START LOOP: for each optionId in param.options */
+          if(optionSelected && !option.default) {
 
-          /* save the element in param.options with key optionId as const option */
-
-          /* START IF: if option is selected and option is not default */
-            /* add price of option to variable price */
-          /* END IF: if option is selected and option is not default */
-          /* START ELSE IF: if option is not selected and option is default */
-            /* deduct price of option from price */
-
-          /* END ELSE IF: if option is not selected and option is default */
-
-        /* END LOOP: for each optionId in param.options */
-
-      /* END LOOP: for each paramId in thisProduct.data.params */
+            price = price + option.price;
+            console.log(price);
+          }
+          else if(!optionSelected && option.default) {
+            price = price - option.price;
+          }
+        }
       }
-      /* set the contents of thisProduct.priceElem to be the value of variable price */
+      thisProduct.priceElem.innerHTML = price;
 
     }
 
-  //end of product class
-  }
+
+  };
+
 
 
 
