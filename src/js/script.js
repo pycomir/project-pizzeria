@@ -168,33 +168,40 @@
       let price = thisProduct.data.price;
       console.log('price:', price);
 
+      console.log(thisProduct.data.params);
       /* START LOOP: for each paramId in thisProduct.data.params */
-      /* save the element in thisProduct.data.params with key paramId as const param */
-
+        /* save the element in thisProduct.data.params with key paramId as const param */
+      for(let paramId in thisProduct.data.params) {
+        const param = thisProduct.data.params[paramId];
+        console.log('param:', param);
+        //console.log('param.options:', param.options);
         /* START LOOP: for each optionId in param.options */
         /* save the element in param.options with key optionId as const option */
-
+        for(let optionId in param.options) {
+          const option = param.options[optionId];
+          console.log('option:', option);
           /* START IF: if option is selected and option is not default */
-
-          /* add price of option to variable price */
-
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          console.log('optionSelected:', optionSelected);
+          if (optionSelected && !option.default) {
+            /* add price of option to variable price */
+            price = price + option.price;
           /* END IF: if option is selected and option is not default */
-
+          }
           /* START ELSE IF: if option is not selected and option is default */
-          /* deduct price of option from price */
-
+          else if(!optionSelected && option.default) {
+            /* deduct price of option from price */
+            price = price - option.price;
           /* END ELSE IF: if option is not selected and option is default */
-
+          }
         /* END LOOP: for each optionId in param.options */
-
+        }
       /* END LOOP: for each paramId in thisProduct.data.params */
-
+      }
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-
-
-
-    }  
-  };
+      thisProduct.priceElem.innerHTML = price;
+    }
+  }
 
 
 
