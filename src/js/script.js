@@ -167,6 +167,7 @@
       /* set variable price to equal thisProduct.data.price */
       let price = thisProduct.data.price;
       console.log('price:', price);
+      
 
       console.log(thisProduct.data.params);
       /* START LOOP: for each paramId in thisProduct.data.params */
@@ -193,6 +194,9 @@
             /* deduct price of option from price */
             price = price - option.price;
           /* END ELSE IF: if option is not selected and option is default */
+          }
+          else if(!optionSelected) {
+
           }
         /* END LOOP: for each optionId in param.options */
         }
