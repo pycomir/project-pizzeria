@@ -95,6 +95,8 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      console.log(thisProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -167,7 +169,7 @@
       /* set variable price to equal thisProduct.data.price */
       let price = thisProduct.data.price;
       console.log('price:', price);
-      
+
 
       console.log(thisProduct.data.params);
       /* START LOOP: for each paramId in thisProduct.data.params */
