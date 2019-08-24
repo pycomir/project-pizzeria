@@ -91,12 +91,12 @@
 
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
-      console.log('thisProduct.form:', thisProduct.form);
+      //console.log('thisProduct.form:', thisProduct.form);
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
-      console.log(thisProduct.imageWrapper);
+      //console.log(thisProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -197,8 +197,22 @@
             price = price - option.price;
           /* END ELSE IF: if option is not selected and option is default */
           }
+          /* START IF: if option is selected  */
+          const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+          console.log('images:', images);
+          if(optionSelected) {
+            /* add menuProduct.imageVisible class to each image of images */
+            for(let image of images) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            }
+          /* END IF option is selected */
+          }
+          /* START ELSE IF option is not selected */
           else if(!optionSelected) {
-
+            // remove menuProduct.imageVisible class from each image of images */
+            for(let image of images)
+            image.classList.remove(classNames.menuProduct.imageVisible);
+          /* END ELSE IF option is not selected */
           }
         /* END LOOP: for each optionId in param.options */
         }
