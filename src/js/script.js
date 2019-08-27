@@ -63,7 +63,9 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
+
       console.log('new Product', thisProduct);
     }
 
@@ -223,6 +225,14 @@
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       thisProduct.priceElem.innerHTML = price;
     }
+
+    initAmountWidget() {
+      const thisProduct = this;
+
+      thisProduct.AmountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+    }
+
+    /* end of product class */
   };
 
   class AmountWidget {
@@ -231,6 +241,14 @@
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
+    }
+
+    getElements(element) {
+      const thisWidget = this;
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
     }
   }
 
