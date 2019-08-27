@@ -224,7 +224,7 @@
       }
       /* multiply price by amount */
       price *= thisProduct.amountWidget.value;
-      console.log(thisProduct.amountWidget.value);
+      //console.log(thisProduct.amountWidget.value);
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       thisProduct.priceElem.innerHTML = price;
     }
@@ -268,10 +268,12 @@
 
       /* TODO: add validation */
 
-      thisWidget.value = newValue;
-      console.log('newValue:', newValue);
-      thisWidget.announce();
-      console.log(thisWidget.announce);
+      if (newValue != thisWidget.value && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax) {
+        thisWidget.value = newValue;
+        console.log('newValue:', newValue);
+        thisWidget.announce();
+        console.log(thisWidget.announce);
+      }
       //console.log(thisWidget.announce);
       thisWidget.input.value = thisWidget.value;
     }
