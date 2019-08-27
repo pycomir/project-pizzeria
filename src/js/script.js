@@ -222,6 +222,9 @@
         }
       /* END LOOP: for each paramId in thisProduct.data.params */
       }
+      /* multiply price by amount */
+      price *= thisProduct.amountWidget.value;
+      console.log(thisProduct.amountWidget.value);
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       thisProduct.priceElem.innerHTML = price;
     }
@@ -229,11 +232,15 @@
     initAmountWidget() {
       const thisProduct = this;
 
-      thisProduct.AmountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function() {
+        thisProduct.processOrder();
+      });
+
     }
 
     /* end of product class */
-  };
+  }
 
   class AmountWidget {
     constructor(element) {
@@ -259,29 +266,33 @@
 
       const newValue = parseInt(value);
 
-      /* TODO: add valoidation */
+      /* TODO: add validation */
 
       thisWidget.value = newValue;
+      console.log('newValue:', newValue);
+      thisWidget.announce();
+      console.log(thisWidget.announce);
+      //console.log(thisWidget.announce);
       thisWidget.input.value = thisWidget.value;
     }
 
     initActions() {
       const thisWidget = this;
 
-      thisWidget.input.addEventListener('change', function(event) {
+      thisWidget.input.addEventListener('change', function() {
         thisWidget.setValue(thisWidget.input.value);
         console.log(thisWidget);
-      })
+      });
 
       thisWidget.linkDecrease.addEventListener('click', function(event) {
         event.preventDefault();
         thisWidget.setValue(thisWidget.value - 1);
-      })
+      });
 
       thisWidget.linkIncrease.addEventListener('click', function(event) {
         event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1);
-      })
+      });
     }
 
     announce() {
@@ -289,10 +300,11 @@
 
       const event = new Event('updated');
       thisWidget.element.dispatchEvent(event);
+      console.log(event);
     }
 
     /* end of AmountWidget class */
-  };
+  }
 
 
 
