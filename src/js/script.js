@@ -238,6 +238,7 @@
   class AmountWidget {
     constructor(element) {
       const thisWidget = this;
+      thisWidget.getElements(element);
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
@@ -250,7 +251,22 @@
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
     }
-  }
+
+    setValue(value) {
+      const thisWidget = this;
+
+      const newValue = parseInt(value);
+
+      /* TODO: add valoidation */
+
+      thisWidget.value = newValue;
+      thisWidget.input.value = thisWidget.value;
+    }
+
+    /* end of AmountWidget class */
+  };
+
+
 
   const app = {
     initMenu: function(){
