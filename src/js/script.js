@@ -173,7 +173,7 @@
 
       console.log(thisProduct.data.params);
       /* START LOOP: for each paramId in thisProduct.data.params */
-        /* save the element in thisProduct.data.params with key paramId as const param */
+      /* save the element in thisProduct.data.params with key paramId as const param */
       for(let paramId in thisProduct.data.params) {
         const param = thisProduct.data.params[paramId];
         console.log('param:', param);
@@ -211,7 +211,7 @@
           else if(!optionSelected) {
             // remove menuProduct.imageVisible class from each image of images */
             for(let image of images)
-            image.classList.remove(classNames.menuProduct.imageVisible);
+              image.classList.remove(classNames.menuProduct.imageVisible);
           /* END ELSE IF option is not selected */
           }
         /* END LOOP: for each optionId in param.options */
@@ -222,9 +222,6 @@
       thisProduct.priceElem.innerHTML = price;
     }
   }
-
-
-
 
   const app = {
     initMenu: function(){
