@@ -97,6 +97,8 @@
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       //console.log(thisProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
+      console.log(thisProduct.amountWidgetElem);
     }
 
     initAccordion(){
@@ -139,7 +141,7 @@
 
     initOrderForm() {
       const thisProduct = this;
-      console.log('initOrderForm:', thisProduct);
+      //console.log('initOrderForm:', thisProduct);
 
       thisProduct.form.addEventListener('submit', function(event){
         event.preventDefault();
@@ -161,31 +163,31 @@
 
     processOrder() {
       const thisProduct = this;
-      console.log('processOrder:', thisProduct);
+      //console.log('processOrder:', thisProduct);
 
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('formData:', formData);
+      //console.log('formData:', formData);
 
       /* set variable price to equal thisProduct.data.price */
       let price = thisProduct.data.price;
-      console.log('price:', price);
+      //console.log('price:', price);
 
 
-      console.log(thisProduct.data.params);
+      //console.log(thisProduct.data.params);
       /* START LOOP: for each paramId in thisProduct.data.params */
       /* save the element in thisProduct.data.params with key paramId as const param */
       for(let paramId in thisProduct.data.params) {
         const param = thisProduct.data.params[paramId];
-        console.log('param:', param);
+        //console.log('param:', param);
         //console.log('param.options:', param.options);
         /* START LOOP: for each optionId in param.options */
         /* save the element in param.options with key optionId as const option */
         for(let optionId in param.options) {
           const option = param.options[optionId];
-          console.log('option:', option);
+          //console.log('option:', option);
           /* START IF: if option is selected and option is not default */
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
-          console.log('optionSelected:', optionSelected);
+          //console.log('optionSelected:', optionSelected);
           if (optionSelected && !option.default) {
             /* add price of option to variable price */
             price = price + option.price;
@@ -199,7 +201,7 @@
           }
           /* START IF: if option is selected  */
           const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
-          console.log('images:', images);
+          //console.log('images:', images);
           if(optionSelected) {
             /* add menuProduct.imageVisible class to each image of images */
             for(let image of images) {
@@ -236,7 +238,7 @@
     initMenu: function(){
       const thisApp = this;
 
-      console.log('thisApp.data:', thisApp.data);
+      //console.log('thisApp.data:', thisApp.data);
 
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
