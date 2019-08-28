@@ -342,7 +342,24 @@
     /* end of AmountWidget class */
   }
 
+  class Cart {
+    constructor(element) {
+      thisCart = this;
+      console.log('thisCart:', thisCart);
+      thisCart.products = [];
 
+      thisCart.getElements(element);
+
+      console.log('new Cart:', thisCart);
+    }
+    getElements(element) {
+      const thisCart = this;
+
+      thisCart.dom = {};
+
+      thisCart.dom.wrapper = element;
+    }     
+  }
 
   const app = {
     initMenu: function(){
