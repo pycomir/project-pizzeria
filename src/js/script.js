@@ -344,7 +344,7 @@
 
   class Cart {
     constructor(element) {
-      thisCart = this;
+      const thisCart = this;
       console.log('thisCart:', thisCart);
       thisCart.products = [];
 
@@ -358,7 +358,7 @@
       thisCart.dom = {};
 
       thisCart.dom.wrapper = element;
-    }     
+    }
   }
 
   const app = {
@@ -378,7 +378,14 @@
       thisApp.data = dataSource;
     },
 
-    init: function(){
+    initCart: function(){
+      const thisApp = this;
+
+      const cartElem = document.querySelector(select.containerOf.cart);
+      thisApp.cart = new Cart(cartElem);
+    },
+
+    init: function() {
       const thisApp = this;
       //console.log('*** App starting ***');
       //console.log('thisApp:', thisApp);
@@ -387,6 +394,7 @@
       //console.log('templates:', templates);
       thisApp.initData();
       thisApp.initMenu();
+      thisApp.initCart();
     },
   };
 
