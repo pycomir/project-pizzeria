@@ -365,10 +365,10 @@
 
       thisCart.dom.toggleTrigger.addEventListener('click', function(event) {
         event.preventDefault();
-        thisCart.dom.wrapper.classList.toggle('active')
+        thisCart.dom.wrapper.classList.toggle('active');
       });
     }
-  /* END of Cart class */  
+  /* END of Cart class */
   }
 
   const app = {
