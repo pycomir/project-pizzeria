@@ -193,6 +193,7 @@
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
     }
 
@@ -350,7 +351,7 @@
       const thisCart = this;
       console.log('thisCart:', thisCart);
       thisCart.products = [];
-
+      console.log('thisCart.products:', thisCart.products);
       thisCart.getElements(element);
       thisCart.initActions();
 
