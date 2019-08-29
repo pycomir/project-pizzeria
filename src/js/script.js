@@ -245,8 +245,8 @@
                 options: {},
               };
             }
-          thisProduct.params[paramId].options[optionId] = option.label;
-          console.log('option.label:', option.label);
+            thisProduct.params[paramId].options[optionId] = option.label;
+            console.log('option.label:', option.label);
             /* add menuProduct.imageVisible class to each image of images */
             for(let image of images) {
               image.classList.add(classNames.menuProduct.imageVisible);
@@ -288,7 +288,9 @@
       thisProduct.name = thisProduct.data.name;
       thisProduct.amount = thisProduct.amountWidget.value;
       app.cart.add(thisProduct);
+
     }
+
     /* end of Product class */
   }
 
@@ -376,7 +378,8 @@
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
-      console.log('thisApp.dom.toggleTrigger:', thisCart.dom.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      //console.log('thisApp.dom.toggleTrigger:', thisCart.dom.toggleTrigger);
     }
 
     initActions() {
@@ -390,7 +393,12 @@
 
     add(menuProduct) {
       //const thisCart = this;
-
+      const generatedHTML = templates.cartProduct(menuProduct);
+      console.log('generatedHTML:', generatedHTML);
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      console.log('generatedDOM:', generatedDOM);
+      const cartContainer = document.querySelector(select.containerOf.cart);
+      cartContainer.appendChild(generatedDOM);
       console.log('adding product:', menuProduct);
     }
 
