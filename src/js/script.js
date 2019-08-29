@@ -403,8 +403,8 @@
       cartContainer.appendChild(generatedDOM);
       //console.log('adding product:', menuProduct);
 
-      thisCart.products.push(menuProduct);
-      //console.log('thisCart.products:', thisCart.products);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
+      console.log('thisCart.products:', thisCart.products);
 
     }
 
@@ -433,7 +433,7 @@
 
       thisCartProduct.dom = {};
       thisCartProduct.dom.wrapper = element;
-      console.log(thisCartProduct.dom.wrapper);
+
       thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
       thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
       thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
