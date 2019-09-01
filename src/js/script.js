@@ -447,7 +447,7 @@
 
       if(thisCart.totalNumber == 0) {
         thisCart.totalPrice = 0;
-      };
+      }
 
       console.log('thisCart.totalNumber:', thisCart.totalNumber);
       console.log('thisCart.subtotalPrice:', thisCart.subtotalPrice);
@@ -464,10 +464,11 @@
       const thisCart = this;
       console.log('thisCart', this);
       const index = thisCart.products.indexOf(cartProduct);
+      console.log('cartProduct', cartProduct);
+      console.log('index:', index);
       thisCart.products.splice(index);
       event.detail.cartProduct.dom.wrapper.remove();
       thisCart.update();
-
 
     }
 
