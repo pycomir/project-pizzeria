@@ -415,8 +415,8 @@
       });
 
       thisCart.dom.productList.addEventListener('remove', function(){
-        thisCart.remove(event.detail);
-        //console.log('product removed');
+        thisCart.remove(event.detail.cartProduct);
+        console.log('product removed');
       });
 
       thisCart.dom.form.addEventListener('submit', function(event){
@@ -432,8 +432,8 @@
 
       const payload = {
         products: [],
-        address: thisCart.dom.address,
-        phone: thisCart.dom.phone,
+        address: thisCart.dom.address.value,
+        phone: thisCart.dom.phone.value,
         totalNumber: thisCart.totalNumber,
         subtotalPrice: thisCart.subtotalPrice,
         totalPrice: thisCart.totalPrice,
