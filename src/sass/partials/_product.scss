@@ -12,12 +12,14 @@
   &__header {
     @include flex(row, center, space-between);
     margin-bottom: ($base-size * 2);
+            
     cursor: pointer;
   }
 
   &__name {
     @extend .h1;
     position: relative;
+
   }
 
   &__icon {

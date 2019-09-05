@@ -1,5 +1,5 @@
 import {templates, classNames, select} from '../settings.js';
-import utils from '../utils.js';
+import {utils} from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 
 class Product {
@@ -68,7 +68,7 @@ class Product {
       event.preventDefault();
 
       /* toggle active class on element of thisProduct */
-      thisProduct.element.classList.toggle('active');
+      thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
 
       /* find all active products */
       const activeProducts = document.querySelectorAll('.product.active');
@@ -80,7 +80,7 @@ class Product {
         /* START: if the active product isn't the element of thisProduct */
         if (activeProduct != thisProduct.element) {
           /* remove class active for the active product */
-          activeProduct.classList.remove('active');
+          activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
         /* END: if the active product isn't the element of thisProduct */
         }
 
