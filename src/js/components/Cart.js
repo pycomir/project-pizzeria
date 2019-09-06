@@ -8,7 +8,7 @@ class Cart {
     //console.log('thisCart:', thisCart);
     thisCart.products = [];
     thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
-    console.log('delivery:', thisCart.deliveryFee);
+    //console.log('delivery:', thisCart.deliveryFee);
     thisCart.getElements(element);
     thisCart.initActions();
 
@@ -28,9 +28,9 @@ class Cart {
     thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
     //console.log(thisCart.dom.form);
     thisCart.dom.phone = thisCart.dom.wrapper.querySelector(select.cart.phone);
-    console.log('phone DOM:', thisCart.dom.phone);
+    //console.log('phone DOM:', thisCart.dom.phone);
     thisCart.dom.address = thisCart.dom.wrapper.querySelector(select.cart.address);
-    console.log('address DOM:', thisCart.dom.address);
+    //console.log('address DOM:', thisCart.dom.address);
     for(let key of thisCart.renderTotalsKeys) {
       thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
     }
@@ -50,7 +50,7 @@ class Cart {
 
     thisCart.dom.productList.addEventListener('remove', function(){
       thisCart.remove(event.detail.cartProduct);
-      console.log('product removed');
+      //console.log('product removed');
     });
 
     thisCart.dom.form.addEventListener('submit', function(event){
@@ -76,8 +76,8 @@ class Cart {
 
     for(let product of thisCart.products) {
       payload.products.push(product.getData());
-      console.log('products:', payload.products);
-      console.log('product',product);
+      //console.log('products:', payload.products);
+      //console.log('product',product);
     }
 
     const options = {
@@ -110,11 +110,11 @@ class Cart {
     //console.log('adding product:', menuProduct);
 
     thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
-    console.log('thisCart.products:', thisCart.products);
+    //console.log('thisCart.products:', thisCart.products);
 
     thisCart.update();
-    console.log('product add');
-    console.log('products in cart', thisCart.products);
+    //console.log('product add');
+    //console.log('products in cart', thisCart.products);
     //console.log('cartProduct:', cartProduct);
 
 
@@ -150,10 +150,10 @@ class Cart {
 
   remove(cartProduct) {
     const thisCart = this;
-    console.log('thisCart', this);
+    //console.log('thisCart', this);
     const index = thisCart.products.indexOf(cartProduct);
-    console.log('cartProduct:', cartProduct);
-    console.log('index:', index);
+    //console.log('cartProduct:', cartProduct);
+    //console.log('index:', index);
     thisCart.products.splice(index, 1);
     event.detail.cartProduct.dom.wrapper.remove();
     thisCart.update();

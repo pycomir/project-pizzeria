@@ -66,10 +66,10 @@ class CartProduct {
         cartProduct: thisCartProduct,
       },
     });
-    console.log('product to remove:', event.detail.cartProduct);
+    //console.log('product to remove:', event.detail.cartProduct);
 
     thisCartProduct.dom.wrapper.dispatchEvent(event);
-    console.log(event.detail.cartProduct.dom.wrapper);
+    //console.log(event.detail.cartProduct.dom.wrapper);
   }
 
   initActions() {

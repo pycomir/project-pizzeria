@@ -90,7 +90,7 @@ const app = {
         thisApp.initMenu();
       });
 
-    console.log('thisApp.data:', JSON.stringify(thisApp.data));
+    //console.log('thisApp.data:', JSON.stringify(thisApp.data));
   },
 
   initCart: function(){
@@ -110,7 +110,7 @@ const app = {
     const thisApp = this;
 
     const bookingWidgetContainer = document.querySelector(select.containerOf.booking);
-    console.log('bookingWidgetContainer:', bookingWidgetContainer);
+    //console.log('bookingWidgetContainer:', bookingWidgetContainer);
     thisApp.bookingWidget = new Booking(bookingWidgetContainer);
   },
 
